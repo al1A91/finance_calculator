@@ -20,7 +20,7 @@ This project highlights analytical skills and an understanding of finance-focuse
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/al1A91/finalCapstone.git
+   git clone https://github.com/al1A91/finance_calculator.git
 
 
 ## Usage
