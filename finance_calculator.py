@@ -1,82 +1,47 @@
-Data_Engineer
-# this is a investment and bond calculator.
- 
 import math
 
 print("investment - to calculate the amount of interest you'll earn on your investment")
-
 print("bond       - to calculate the amount you'll have to pay on a home loan\n")
 
-# the value below determines selection using Booleans method of True or False.
-# the program will continuosly ask the question unless the conditions are met.
-
-while (True):
-
-    # selection stores our input of investment or bond. 
-    
+# Loop until a valid selection is made
+while True:
     selection = input("Enter either 'investment' or 'bond' from the menu above to proceed: ").lower()
 
-    # investment
-        
-    if selection == ("investment"):
-        
+    # Investment calculation
+    if selection == "investment":
         P = float(input("Enter the amount of money that will be deposited: "))
+        r = float(input("Enter the annual interest rate (in %): "))
+        t = int(input("Enter the number of years you plan to invest: "))
 
-        r = float(input("Enter interest rate in percent: "))
-
-        t = int(input("Enter planned years of investment: "))
-        
-        
-
-        # the output is determined on input simple or compund.
-        # break will stop the programe once the conditinos are met.
-        
-        while (True):
-            
-            interest = input("Select 'simple' or 'compound' plan: ").lower()
+        # Loop until a valid interest type is chosen
+        while True:
+            interest = input("Select 'simple' or 'compound' interest: ").lower()
 
             if interest == "simple":
-                
-                A = P * (1 + (r*0.01)*t)
-                
-                print("Your total amoutn will be:",round (A,2),"for",t,"years of investment.")
-
+                A = P * (1 + (r / 100) * t)
+                print(f"Your total amount will be: £{round(A, 2)} after {t} years of investment.")
                 break
-
-        
             elif interest == "compound":
-
-                A = P * math.pow((1 + (r*0.01)), t)
-                
-                print("Your total amount will be:",round (A,2),"for",t,"years of investment.")
-                
-                break            
-
+                A = P * math.pow((1 + (r / 100)), t)
+                print(f"Your total amount will be: £{round(A, 2)} after {t} years of investment.")
+                break
             else:
-                print("Invalid interest selected.")
+                print("Invalid interest type. Please enter 'simple' or 'compound'.")
 
-        break
-            
-    
-    
+        break  # Exit after a valid investment calculation
 
-    # Bond repayment
-
-    elif selection == ("bond"):   
-    
+    # Bond repayment calculation
+    elif selection == "bond":
         P = float(input("Enter the present value of the house: "))
-
-        r = float(input("Enter the interest rate: "))
-
+        r = float(input("Enter the annual interest rate (in %): "))
         n = int(input("Enter the number of months over which the bond will be repaid: "))
 
-        i = n/12
+        i = (r / 100) / 12  # Monthly interest rate
+        repayment = (i * P) / (1 - (1 + i) ** -n)
 
-        repayment = ((i * 0.01) * P) / (1 - (1 + i)**(-n))
+        print(f"Your monthly repayment will be: £{round(repayment, 2)} for the next {n} months.")
 
-        print("Your repayment is:",round (repayment,2),"per month for the next",n, "months.")
-
-        break
+        break  # Exit after a valid bond calculation
 
     else:
-        print("Invalid entry please try again.")
+        print("Invalid entry, please try again.")
