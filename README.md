@@ -34,7 +34,7 @@ This project highlights analytical skills and an understanding of finance-focuse
    ```bash
    python financial_calculator.py
  
-5. If multiple versions of Python are installed, specify the correct version, e.g., python3 watch_next.py.
+5. If multiple versions of Python are installed, specify the correct version, e.g., python3 financial_calculator.py
    ```bash
    python3 financial_calculator.py
    
